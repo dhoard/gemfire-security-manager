@@ -15,7 +15,7 @@ mvn clean package
 ```
 mkdir /opt/security-manager
 ```
-2. Copy target/gemfire-security-manager-0.1.0-SNAPSHOT.jar the created directory
+2. Copy target/gemfire-security-manager-0.1.0-SNAPSHOT.jar to the created directory
 ```
 cp target/gemfire-security-manager-0.1.0-SNAPSHOT.jar /opt/security-manager
 ```
@@ -36,14 +36,14 @@ gfsh> start locator --name=locator1 \
 5. Start the server
 ```
 gfsh> start server --name=server1 \
-    > --locators=gemfire.confluent.io[10334] --server-port=40411 \
+    > --locators=gemfire.address.cx[10334] --server-port=40411 \
     > --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
     > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar \
     > --user=admin --password=xyz1234
 ```
 6. Connect
 ```
-gfsh> connect --locator=gemfire.confluent.io[10334] \
+gfsh> connect --locator=gemfire.address.cx[10334] \
     > --user=admin --password=xyz1234
 ```
 7. List members
