@@ -34,14 +34,14 @@ password = xyz1234
 5. Start the server
 
   gfsh> start server --name=server1 \
-      > --locators=<server address>[10334] --server-port=40411 \
+      > --locators=gemfire.confluent.io[10334] --server-port=40411 \
       > --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
       > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar \
       > --user=admin --password=xyz1234
 
 6. Connect
 
-  gfsh> connect --locator=<server address>[10334] \
+  gfsh> connect --locator=gemfire.confluent.io[10334] \
       > --user=admin --password=xyz1234
 
 7. List members
