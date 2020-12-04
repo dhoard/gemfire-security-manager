@@ -1,0 +1,9 @@
+start locator --name=locator1 --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager --classpath=/opt/pivotal-gemfire/extra/gemfire-security-manager-0.1.0-SNAPSHOT.jar
+
+start server --name=server1 --locators=gemfire.address.cx[10334] --server-port=40411 --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager --classpath=/opt/pivotal-gemfire/extra/gemfire-security-manager-0.1.0-SNAPSHOT.jar --user=admin --password=xyz1234
+
+connect --locator=gemfire.address.cx[10334] --user=admin --password=xyz1234
+
+create region --name=check --type=REPLICATE_PERSISTENT
+
+query --query="select * from /check"
