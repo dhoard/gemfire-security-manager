@@ -8,7 +8,9 @@ password = xyz1234
 ----
 
 1. Clone the project and build it using mvn
-
+```
+mvn clean package
+```
 2. Create a directory for the jar
 ```
 mkdir /opt/security-manager
