@@ -63,3 +63,13 @@ server1  | 192.168.100.173(server1:10139)<v1>:41001
 ```
 gfsh> query --query="select * from /check"  
 ```
+Example output...
+```
+Result : true
+Limit  : 100
+Rows   : 1
+
+Result
+-----------------------------------------------
+test-value-9564bbcd-11d3-450a-9b22-6b18b40ac7a9
+```
