@@ -23,17 +23,21 @@ cp target/gemfire-security-manager-0.1.0-SNAPSHOT.jar /opt/security-manager
 ```
 cd /opt/pivotal-gemfire-9.10.5
 ``` 
-3. Launch the gfsh shell
+4. Adde gemfire bin to path
+```
+export PATH=$PATH:/opt/pivotal-gemfire-9.10.5/bin
+```
+4. Launch the gfsh shell
 ```
 gfsh
 ```
-4. Start the locator
+5. Start the locator
 ```
 gfsh> start locator --name=locator1 \
     > --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
     > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar
 ```
-5. Start the server
+6. Start the server
 ```
 gfsh> start server --name=server1 \
     > --locators=gemfire.address.cx[10334] --server-port=40411 \
@@ -41,12 +45,12 @@ gfsh> start server --name=server1 \
     > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar \
     > --user=admin --password=xyz1234
 ```
-6. Connect
+7. Connect
 ```
 gfsh> connect --locator=gemfire.address.cx[10334] \
     > --user=admin --password=xyz1234
 ```
-7. List members
+8. List members
 ```
 gfsh> list members
 ```
@@ -59,7 +63,7 @@ Member Count : 2
 locator1 | 192.168.100.173(locator1:9670:locator)<ec><v0>:41000 [Coordinator]
 server1  | 192.168.100.173(server1:10139)<v1>:41001
 ```  
-8. Query the region to check for data
+9. Query the region to check for data
 ```
 gfsh> query --query="select * from /check"  
 ```
