@@ -15,42 +15,42 @@ mvn clean package
 ```
 mkdir /opt/security-manager
 ```
-2. Copy target/gemfire-security-manager-0.1.0-SNAPSHOT.jar to the created directory
+3. Copy target/gemfire-security-manager-0.1.0-SNAPSHOT.jar to the created directory
 ```
 cp target/gemfire-security-manager-0.1.0-SNAPSHOT.jar /opt/security-manager
 ```
-3. Change to the gemfire installation root
+4. Change to the gemfire installation root
 ```
 cd /opt/pivotal-gemfire-9.10.5
 ``` 
-4. Adde gemfire bin to path
+5. Add gemfire bin to path
 ```
 export PATH=$PATH:/opt/pivotal-gemfire-9.10.5/bin
 ```
-4. Launch the gfsh shell
+6. Launch the gfsh shell
 ```
 gfsh
 ```
-5. Start the locator
+7. Start the locator
 ```
 gfsh> start locator --name=locator1 \
-    > --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
-    > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar
+    --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
+    --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar
 ```
-6. Start the server
+8. Start the server
 ```
 gfsh> start server --name=server1 \
-    > --locators=gemfire.address.cx[10334] --server-port=40411 \
-    > --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
-    > --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar \
-    > --user=admin --password=xyz1234
+    --locators=gemfire.address.cx[10334] --server-port=40411 \
+    --J=-Dgemfire.security-manager=com.github.dhoard.SimpleSecurityManager \
+    --classpath=/opt/security-manager/gemfire-security-manager-0.1.0-SNAPSHOT.jar \
+    --user=admin --password=xyz1234
 ```
-7. Connect
+9. Connect
 ```
 gfsh> connect --locator=gemfire.address.cx[10334] \
-    > --user=admin --password=xyz1234
+    --user=admin --password=xyz1234
 ```
-8. List members
+10. List members
 ```
 gfsh> list members
 ```
@@ -63,7 +63,7 @@ Member Count : 2
 locator1 | 192.168.100.173(locator1:9670:locator)<ec><v0>:41000 [Coordinator]
 server1  | 192.168.100.173(server1:10139)<v1>:41001
 ```  
-9. Query the region to check for data
+11. Query the region to check for data
 ```
 gfsh> query --query="select * from /check"  
 ```
